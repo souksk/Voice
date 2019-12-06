@@ -67,7 +67,7 @@ export default class App extends Component {
         <View style={styles.btnStart}>
           <Button style={styles.transcript}
           onPress={this._startRecognition.bind(this)}
-          title="Start"></Button>
+          title="Startt"></Button>
         </View>
       </View>
     )
