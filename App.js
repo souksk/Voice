@@ -41,12 +41,7 @@ export default class App extends Component {
     this.setState({
       results: e.value,
     });
-    if(this.state.results=="Xin" || this.state.results=="xin")
-    {
-      console.log("good")
-    }
-
-    await Voice.destroy();
+  //  await Voice.destroy();
   }
 
   async _startRecognition(e) {
