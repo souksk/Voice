@@ -47,7 +47,7 @@ export default class App extends Component {
   async _startRecognition(e) {
     try {
       this.setState({ results: ''})
-      console.log(this.state.results)
+      //console.log(this.state.results)
       this.setState({
         recognized: '',
       });
@@ -57,6 +57,17 @@ export default class App extends Component {
     } catch (e) {
       console.error(e);
     }
+  }
+  async stop()
+  {
+    await Voice.destroy();
+    this.setState({ results: ''})
+    //console.log(this.state.results)
+    this.setState({
+      recognized: '',
+    });
+    this.setState({
+      started: '',})
   }
 
   render() {
@@ -70,6 +81,9 @@ export default class App extends Component {
           <Button style={styles.transcript}
           onPress={this._startRecognition.bind(this)}
           title="Start"></Button>
+           <Button style={styles.transcript}
+          onPress={()=>this.stop()}
+          title="save"></Button>
         </View>
       </View>
     )
