@@ -15,7 +15,7 @@ export default class App extends Component {
     this.state = {
       recognized: '',
       started: '',
-      results: '',
+      results: [],
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
@@ -38,30 +38,37 @@ export default class App extends Component {
   };
 
   async onSpeechResults(e) {
+   // const data = [];
+    //data.push(e.value)
     this.setState({
       results: e.value,
     });
-
-    if(this.state.results=="Xin" || this.state.results=="xin")
-    {
-      console.log("good")
-    }
-    await Voice.destroy();
+    //console.log(data)
+ //   if(this.state.results.map(data=>data.match(/^(.*?(\bStop\b)[^$]*)$/g))!= null)
+  //  {
+  //    console.log("stop")
+     // await Voice.destroy();
+  //  }
+ //   await Voice.destroy();
   }
 
   async _startRecognition(e) {
     try {
-      this.setState({ results: ''})
+      this.setState({ results: []})
       console.log(this.state.results)
       this.setState({
         recognized: '',
       });
       this.setState({
         started: '',})
-      await Voice.start('vi-VN');
+      await Voice.start('vn-VN');
     } catch (e) {
       console.error(e);
     }
+  }
+  async stop()
+  {
+    await Voice.destroy();
   }
 
   render() {
@@ -70,11 +77,14 @@ export default class App extends Component {
         <Text style={styles.transcript}>
             Transcript
         </Text>
-       <Text style={styles.transcript}> {this.state.results}</Text>
+       <Text style={styles.transcript}> {this.state.results.map(data=>(data))}</Text>
         <View style={styles.btnStart}>
           <Button style={styles.transcript}
           onPress={this._startRecognition.bind(this)}
           title="Start"></Button>
+           <Button style={styles.transcript}
+          onPress={()=>this.stop()}
+          title="Stop"></Button>
         </View>
       </View>
     )
