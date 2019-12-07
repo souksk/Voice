@@ -15,7 +15,7 @@ export default class App extends Component {
     this.state = {
       recognized: '',
       started: '',
-      results: [],
+      results: '',
     };
     Voice.onSpeechStart = this.onSpeechStart.bind(this);
     Voice.onSpeechRecognized = this.onSpeechRecognized.bind(this);
@@ -37,19 +37,22 @@ export default class App extends Component {
     });
   };
 
-  onSpeechResults(e) {
+  async onSpeechResults(e) {
     this.setState({
       results: e.value,
     });
+    await Voice.destroy();
   }
 
   async _startRecognition(e) {
-    this.setState({
-      recognized: '',
-      started: '',
-      results: [],
-    });
     try {
+      this.setState({ results: ''})
+      console.log(this.state.results)
+      this.setState({
+        recognized: '',
+      });
+      this.setState({
+        started: '',})
       await Voice.start('vi-VN');
     } catch (e) {
       console.error(e);
@@ -62,12 +65,11 @@ export default class App extends Component {
         <Text style={styles.transcript}>
             Transcript
         </Text>
-        {this.state.results.map((result, index) => <Text style={styles.transcript}> {result}</Text>
-        )}
+       <Text style={styles.transcript}> {this.state.results}</Text>
         <View style={styles.btnStart}>
           <Button style={styles.transcript}
           onPress={this._startRecognition.bind(this)}
-          title="Startt"></Button>
+          title="Start"></Button>
         </View>
       </View>
     )
