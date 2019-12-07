@@ -1,2 +1,2 @@
-const data = "a pass is good but Not Bad ";
-console.log(data.match(/^(.*?(\bpass\b)[^$]*)$/g));
+const data = "Bạn Ah được bẩy điểm";
+console.log(data.match(/^(.*?(\bđược\b)[^$]*)$\p{L}/u));

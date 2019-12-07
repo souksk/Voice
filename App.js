@@ -38,17 +38,22 @@ export default class App extends Component {
   };
 
   async onSpeechResults(e) {
-   // const data = [];
+    const data = e.value;
     //data.push(e.value)
     this.setState({
       results: e.value,
     });
-    //console.log(data)
- //   if(this.state.results.map(data=>data.match(/^(.*?(\bStop\b)[^$]*)$/g))!= null)
-  //  {
-  //    console.log("stop")
+   
+    //console.log(this.state.results[0].match(/^(.*?(\bxin\b)[^$]*)$/g))
+    if(this.state.results[0].match(/^(.*?(\bđược\b)[^$]*)$/g)!= null)
+    {
+      console.log("detected");
      // await Voice.destroy();
-  //  }
+   }
+   else
+   {
+     console.log("not detected")
+   }
  //   await Voice.destroy();
   }
 
@@ -61,7 +66,7 @@ export default class App extends Component {
       });
       this.setState({
         started: '',})
-      await Voice.start('vn-VN');
+      await Voice.start('vi-VN');
     } catch (e) {
       console.error(e);
     }
