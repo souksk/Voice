@@ -1,19 +1,16 @@
 import voice from './voice';
 import main from './main'
-import { createBottomTabNavigator } from 'react-navigation-tabs';
 import gioithieu from './gioithieu'
 import lienhe from './lienhe';
-import { createAppContainer, createStackNavigator } from 'react-navigation';
- 
+import { createAppContainer } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 
 const bottom = createBottomTabNavigator({
-   
     Home: { screen: voice },
     main: { screen: main },
     gioithieu:{screen:gioithieu},
     lienHe:{screen:lienhe}
-
   },
   {
     initialRouteName: 'Home',

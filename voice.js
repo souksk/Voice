@@ -9,10 +9,18 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   Alert,
+  StatusBar,
   SafeAreaView
 } from 'react-native';
 import Voice from 'react-native-voice';
 import Routes from './routes';
+
+const MyStatusBar = ({backgroundColor, ...props}) => (
+  <View style={[styles.statusBar, { backgroundColor }]}>
+    <StatusBar translucent backgroundColor={backgroundColor} {...props} />
+  </View>
+);
+
 export default class voice extends Component {
   constructor(props) {
     super(props);
@@ -129,29 +137,40 @@ export default class voice extends Component {
   render() {
     return (
       <View>
+        <MyStatusBar backgroundColor="#5E8D48" barStyle="light-content" />
+        <View style={{width:'100%',borderBottomWidth:1,borderBottomColor:'#5E8D48'}}>
+          <Text style={styles.head}>VOID CONTROL</Text>
+        </View>
         <Text style={styles.transcript}>
             Transcript
         </Text>
        <Text style={styles.transcript}> {this.state.results.map(data=>(data))}</Text>
-        <View style={styles.btnStart}>
-          <Button style={styles.transcript}
-          onPress={this._startRecognition.bind(this)}
-          title="Start"></Button>
-           
-        </View>
-        <TouchableOpacity style={{textAlign:'center',alignItems:"center",alignContent:"center"}}
-  onPress={()=>this.stop()}><Text>{this.state.loading? <ActivityIndicator size="large" color="#0000ff" />:"clear"}</Text></TouchableOpacity>
+       <View style={{flexDirection:'row',justifyContent:'center'}}>
+          <View style={styles.btnStart}>
+            <Button style={styles.transcript}
+            onPress={this._startRecognition.bind(this)}
+            title="Start"></Button>
+          </View>
+          <View style={styles.btncc}>
+            <TouchableOpacity style={{textAlign:'center',alignItems:"center",alignContent:"center"}}
+              onPress={()=>this.stop()}><Text style={{fontSize:18,fontWeight:'bold',color:'#f79295'}}>{this.state.loading? <ActivityIndicator size="large" color="#0000ff" />:"clear"}</Text></TouchableOpacity>
+          </View>
+       </View>
       </View>
     )
   }
 }
+const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBar.currentHeight;
 const styles = StyleSheet.create({
   transcript: {
     textAlign: 'center',
     color: '#B0171F',
     marginBottom: 1,
     top: '100%',
-    marginTop:100,
+    marginTop:20,
+  },
+  statusBar: {
+    height: STATUSBAR_HEIGHT,
   },
   btnStart:{
     height:100,
@@ -161,6 +180,26 @@ const styles = StyleSheet.create({
     textAlign:'center',
     alignSelf:'center',
     borderRadius:100/2,
+  },
+  btncc:{
+    height:98,
+    width:98,
+    justifyContent:'center',
+    backgroundColor:'white',
+    borderColor:'#f79295',
+    borderWidth:4,
+    textAlign:'center',
+    alignSelf:'center',
+    borderRadius:100/2,
+    margin:10
+  },
+  head:{
+    fontSize:22,
+    fontWeight:'bold',
+    fontFamily:'times new roman',
+    alignSelf:'center',
+    padding:10,
+    color:'#5E8D48'
   }
 });
 AppRegistry.registerComponent('Voice', () => Voice);
