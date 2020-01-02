@@ -19,6 +19,7 @@
     "react-navigation": "^3.5.0",
     "react-navigation-tabs": "^2.6.2"
   },
+  "postinstall" : "npx jetify",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/runtime": "^7.6.2",

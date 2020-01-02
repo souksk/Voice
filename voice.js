@@ -139,22 +139,25 @@ export default class voice extends Component {
       <View>
         <MyStatusBar backgroundColor="#5E8D48" barStyle="light-content" />
         <View style={{width:'100%',borderBottomWidth:1,borderBottomColor:'#5E8D48'}}>
-          <Text style={styles.head}>VOID CONTROL</Text>
+          <Text style={styles.head}>VOICE CONTROL</Text>
         </View>
         <Text style={styles.transcript}>
             Transcript
         </Text>
        <Text style={styles.transcript}> {this.state.results.map(data=>(data))}</Text>
        <View style={{flexDirection:'row',justifyContent:'center'}}>
+
           <View style={styles.btnStart}>
-            <Button style={styles.transcript}
-            onPress={this._startRecognition.bind(this)}
-            title="Start"></Button>
+            <TouchableOpacity style={{textAlign:'center',alignItems:"center",alignContent:"center"}}
+              onPress={this._startRecognition.bind(this)}>
+                <Text style={{fontSize:18,fontWeight:'bold',color:'#694fad'}}>Start</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.btncc}>
             <TouchableOpacity style={{textAlign:'center',alignItems:"center",alignContent:"center"}}
-              onPress={()=>this.stop()}><Text style={{fontSize:18,fontWeight:'bold',color:'#f79295'}}>{this.state.loading? <ActivityIndicator size="large" color="#0000ff" />:"clear"}</Text></TouchableOpacity>
+              onPress={()=>this.stop()}><Text style={{fontSize:18,fontWeight:'bold',color:'#f79295'}}>{this.state.loading? <ActivityIndicator size="large" color="#0000ff" />:"Clear"}</Text></TouchableOpacity>
           </View>
+
        </View>
       </View>
     )
@@ -167,7 +170,7 @@ const styles = StyleSheet.create({
     color: '#B0171F',
     marginBottom: 1,
     top: '100%',
-    marginTop:20,
+    marginTop:30,
   },
   statusBar: {
     height: STATUSBAR_HEIGHT,
