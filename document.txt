@@ -1,0 +1,36 @@
+npm i react-navigation-tabs
+
+react-native link react-navigation-tabs
+
+cd ios && pod install && cd ..
+
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context
+
+
+cd ios && pod install && cd ..
+
+npm i react-native-voice --save
+
+cd ios && pod install && cd ..
+
+react-native link react-native-voice
+
+
+//
+react-native link react-navigation
+
+react-native link react-navigation
+
+cd ios && pod install && cd ..
+
+doc
+
+https://www.npmjs.com/package/react-navigation-tabs
+
+
+
+https://reactnavigation.org/docs/en/getting-started.html
+
+
+
+https://github.com/react-native-community/react-native-voice
