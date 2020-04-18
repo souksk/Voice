@@ -1,3 +1,4 @@
+btg
 npm i react-navigation-tabs
 
 react-native link react-navigation-tabs
