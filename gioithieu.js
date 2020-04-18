@@ -12,7 +12,6 @@ export default class gioithieu extends Component {
     super(props);
     this.state = {
       images: [
-       
         require('./images/btg1.jpg'),          // Local image
         require('./images/btg2.jpg'),          // Local image
         require('./images/btg3.jpg'),          // Local image
@@ -29,10 +28,9 @@ export default class gioithieu extends Component {
           <Text style={styles.head}>Trang giới thiệu</Text>
         </View>
         <SliderBox images={this.state.images} />
-
+        
         <SafeAreaView style={{ alignContent: "center", alignSelf: 'center', alignItems: "center" }}>
           <Text style={styles.body}>  👏🏻 Giới thiệu về Khoa Kỹ thuật - Công nghệ Trường Đại học Hà Tĩnh 🤝</Text>
-
           <Text style={styles.body}>   👉🏻 Là Khoa duy nhất đào tạo Kỹ sư trên địa bàn Tỉnh Hà Tĩnh với hai ngành Kỹ thuật xây dựng  và Công nghệ thông tin
           Chương trình đào tạo linh hoạt với 01 năm thực tập được hưởng lương tại các doanh nghiệp trong và ngoài nước.</Text>
           <Text style={styles.body}>   👉🏻 Chi phí học tập và sinh hoạt thấp nhất cả nước.</Text>

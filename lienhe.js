@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, SafeAreaView, StatusBar, StyleSheet, Image } from 'react-native';
+import { View, Text, SafeAreaView, StatusBar, StyleSheet, Image, Linking } from 'react-native';
 const MyStatusBar = ({ backgroundColor, ...props }) => (
   <View style={[styles.statusBar, { backgroundColor }]}>
     <StatusBar translucent backgroundColor={backgroundColor} {...props} />
@@ -23,7 +23,6 @@ export default class lienhe extends Component {
         </View>
         <SafeAreaView style={{
           alignContent: "center", alignSelf: 'center', alignItems: "center", fontFamily: 'times new roman',
-
         }}>
           <Text></Text>
           <Image source={this.state.image} style={{ width: 400, height: 250 }} />
@@ -34,9 +33,9 @@ export default class lienhe extends Component {
           <Text></Text>
 
           <Text style={styles.body}> Tầng 4 dãy nhà A5, CSM, Trường Đại học Hà Tĩnh</Text>
-          <Text style={styles.body} > Điện thoại: 0912 442 405 | 0964 264 073</Text>
-          <Text style={styles.body}> Email: khoakt-cn@hu-edu.vn</Text>
-          <Text style={styles.body}> Web: http://ent.htu.edu.vn/</Text>
+          <Text style={styles.body} > Điện thoại: 0912-442-405 | 0964-264-073</Text>
+          <Text style={styles.body}> Email: khoakt-cn@hu.edu.vn</Text>
+          <Text style={styles.body} onPress={() => { Linking.openURL('http://ent.htu.edu.vn/') }} > Web: http://ent.htu.edu.vn/</Text>
         </SafeAreaView>
       </View>
     );
